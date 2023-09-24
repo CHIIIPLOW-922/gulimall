@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chiiiplow.gulimall.member.dao.MemberCollectSubjectDao;
 import com.chiiiplow.gulimall.member.entity.MemberCollectSubjectEntity;
 import com.chiiiplow.gulimall.member.service.MemberCollectSubjectService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.Query;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

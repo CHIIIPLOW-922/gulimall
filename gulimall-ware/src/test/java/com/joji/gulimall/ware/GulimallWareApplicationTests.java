@@ -1,4 +1,4 @@
-package com.joji.gulimall.ware;
+package com.chiiiplow.gulimall.ware;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

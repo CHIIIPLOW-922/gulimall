@@ -1,7 +1,7 @@
-package com.joji.gulimall.product;
+package com.chiiiplow.gulimall.product;
 
-import com.joji.gulimall.product.entity.BrandEntity;
-import com.joji.gulimall.product.service.BrandService;
+import com.chiiiplow.gulimall.product.entity.BrandEntity;
+import com.chiiiplow.gulimall.product.service.BrandService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

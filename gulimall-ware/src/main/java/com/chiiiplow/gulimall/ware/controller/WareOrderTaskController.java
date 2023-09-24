@@ -2,8 +2,8 @@ package com.chiiiplow.gulimall.ware.controller;
 
 import com.chiiiplow.gulimall.ware.entity.WareOrderTaskEntity;
 import com.chiiiplow.gulimall.ware.service.WareOrderTaskService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.R;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * 库存工作单
  *
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 14:23:19
  */

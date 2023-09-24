@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 @EnableDiscoveryClient
-@MapperScan("com.joji.gulimall.member.dao")
+@MapperScan("com.chiiiplow.gulimall.member.dao")
 @SpringBootApplication
 public class GulimallMemberApplication {
 

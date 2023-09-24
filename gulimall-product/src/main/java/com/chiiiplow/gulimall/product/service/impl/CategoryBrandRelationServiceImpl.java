@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chiiiplow.gulimall.product.dao.CategoryBrandRelationDao;
 import com.chiiiplow.gulimall.product.entity.CategoryBrandRelationEntity;
 import com.chiiiplow.gulimall.product.service.CategoryBrandRelationService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.Query;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

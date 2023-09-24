@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * 商品库存
  * 
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 14:23:18
  */

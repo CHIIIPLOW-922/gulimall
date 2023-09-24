@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
-@MapperScan("com.joji.gulimall.order.dao")
+@MapperScan("com.chiiiplow.gulimall.order.dao")
 @SpringBootApplication
 public class GulimallOrderApplication {
 

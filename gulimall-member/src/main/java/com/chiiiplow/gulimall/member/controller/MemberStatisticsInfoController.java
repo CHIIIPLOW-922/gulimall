@@ -2,8 +2,8 @@ package com.chiiiplow.gulimall.member.controller;
 
 import com.chiiiplow.gulimall.member.entity.MemberStatisticsInfoEntity;
 import com.chiiiplow.gulimall.member.service.MemberStatisticsInfoService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.R;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * 会员统计信息
  *
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 14:06:38
  */

@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chiiiplow.gulimall.member.dao.MemberLoginLogDao;
 import com.chiiiplow.gulimall.member.entity.MemberLoginLogEntity;
 import com.chiiiplow.gulimall.member.service.MemberLoginLogService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.Query;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

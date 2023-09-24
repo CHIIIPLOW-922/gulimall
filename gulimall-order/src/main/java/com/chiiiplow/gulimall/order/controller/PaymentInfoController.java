@@ -2,8 +2,8 @@ package com.chiiiplow.gulimall.order.controller;
 
 import com.chiiiplow.gulimall.order.entity.PaymentInfoEntity;
 import com.chiiiplow.gulimall.order.service.PaymentInfoService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.R;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * 支付信息表
  *
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 14:19:20
  */

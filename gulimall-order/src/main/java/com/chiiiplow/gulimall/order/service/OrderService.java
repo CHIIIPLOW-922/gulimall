@@ -2,14 +2,14 @@ package com.chiiiplow.gulimall.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chiiiplow.gulimall.order.entity.OrderEntity;
-import com.joji.common.utils.PageUtils;
+import com.chiiiplow.common.utils.PageUtils;
 
 import java.util.Map;
 
 /**
  * 订单
  *
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 14:19:20
  */

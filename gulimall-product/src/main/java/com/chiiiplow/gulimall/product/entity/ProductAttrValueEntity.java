@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * spu属性值
  * 
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 12:43:26
  */

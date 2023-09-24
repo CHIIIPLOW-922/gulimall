@@ -2,8 +2,8 @@ package com.chiiiplow.gulimall.product.controller;
 
 import com.chiiiplow.gulimall.product.entity.CategoryBrandRelationEntity;
 import com.chiiiplow.gulimall.product.service.CategoryBrandRelationService;
-import com.joji.common.utils.PageUtils;
-import com.joji.common.utils.R;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * 品牌分类关联
  *
- * @author joji
+ * @author chiiiplow
  * @email q641484973@gmail.com
  * @date 2022-10-13 12:43:26
  */
