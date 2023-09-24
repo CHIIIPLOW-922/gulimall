@@ -1,10 +1,10 @@
-package com.chiiiplow.gulimall.ware;
+package com.chiiiplow.gulimall.gateway;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GulimallWareApplicationTests {
+public class GulimallGatewayApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,9 +1,11 @@
 package com.chiiiplow.gulimall.product.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.chiiiplow.gulimall.product.entity.CategoryEntity;
 import com.chiiiplow.common.utils.PageUtils;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,5 +18,8 @@ import java.util.Map;
 public interface CategoryService extends IService<CategoryEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+
+    List<CategoryEntity> listWithTree();
 }
 
