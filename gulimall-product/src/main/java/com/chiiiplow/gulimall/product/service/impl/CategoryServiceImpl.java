@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.chiiiplow.gulimall.product.dao.CategoryDao;
+import com.chiiiplow.gulimall.product.entity.CategoryBrandRelationEntity;
 import com.chiiiplow.gulimall.product.entity.CategoryEntity;
 import com.chiiiplow.gulimall.product.service.CategoryService;
 import com.chiiiplow.common.utils.PageUtils;
@@ -43,6 +44,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         }).collect(Collectors.toList());
 
         return levelMenus;
+    }
+
+    @Override
+    public void removeMenuByIds(List<Long> asList) {
+        //逻辑删除
+        baseMapper.deleteBatchIds(asList);
     }
 
     private List<CategoryEntity> getChildrens(CategoryEntity root, List<CategoryEntity> all) {
