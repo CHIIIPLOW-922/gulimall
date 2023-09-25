@@ -11,6 +11,8 @@ import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -50,6 +52,34 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     public void removeMenuByIds(List<Long> asList) {
         //逻辑删除
         baseMapper.deleteBatchIds(asList);
+    }
+
+    @Override
+    public Long[] findCatelogPath(Long catelogId) {
+        List<Long> paths = new ArrayList<>();
+
+        //递归查询是否还有父节点
+        List<Long> parentPath = findParentPath(catelogId, paths);
+
+        //进行一个逆序排列
+        Collections.reverse(parentPath);
+
+        return (Long[]) parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    private List<Long> findParentPath(Long catelogId, List<Long> paths) {
+
+        //1、收集当前节点id
+        paths.add(catelogId);
+
+        //根据当前分类id查询信息
+        CategoryEntity byId = this.getById(catelogId);
+        //如果当前不是父分类
+        if (byId.getParentCid() != 0) {
+            findParentPath(byId.getParentCid(),paths);
+        }
+
+        return paths;
     }
 
     private List<CategoryEntity> getChildrens(CategoryEntity root, List<CategoryEntity> all) {
