@@ -24,3 +24,8 @@ server:
   servlet:
     session:
       timeout: 30m
+
+#日志级别
+logging:
+  level:
+    com.chiiiplow.gulimall: debug
