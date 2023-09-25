@@ -1,19 +1,26 @@
 spring:
+  application:
+    name: gulimall-product
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://192.168.194.103:3306/gulimall_pms
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #注册发现
   cloud:
     nacos:
       discovery:
         server-addr: 192.168.194.103:8848
-  application:
-    name: gulimall-product
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+#端口
 server:
   port: 10000
+  servlet:
+    session:
+      timeout: 30m

@@ -1,10 +1,5 @@
 spring:
   cloud:
-    nacos:
-      config:
-        server-addr: 192.168.194.103:8848
-    application:
-      name: gulimall-gateway
     gateway:
       routes:
 
