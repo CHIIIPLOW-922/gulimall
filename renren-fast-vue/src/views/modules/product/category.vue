@@ -129,11 +129,18 @@ export default {
             method: "post",
             data: this.$http.adornData(catIds, false)
           }).then(({ data }) => {
+            if(data.code===0){
             this.$message({
               message: "菜单批量删除成功",
               type: "success"
             });
             this.getMenus();
+          }else{
+            this.$message({
+            message: data.msg,
+            type:"warning"
+            });
+          }
           });
         })
         .catch(() => {});
@@ -349,6 +356,7 @@ export default {
             method: "post",
             data: this.$http.adornData(ids, false)
           }).then(({ data }) => {
+            if(data.code===0){
             this.$message({
               message: "菜单删除成功",
               type: "success"
@@ -357,6 +365,12 @@ export default {
             this.getMenus();
             //设置需要默认展开的菜单
             this.expandedKey = [node.parent.data.catId];
+          }else{
+            this.$message({
+            message: error.msg,
+            type:"warning"
+          })
+          }
           });
         })
         .catch(() => {});

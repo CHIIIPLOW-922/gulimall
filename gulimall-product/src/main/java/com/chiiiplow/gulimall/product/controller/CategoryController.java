@@ -2,7 +2,6 @@ package com.chiiiplow.gulimall.product.controller;
 
 import com.chiiiplow.gulimall.product.entity.CategoryEntity;
 import com.chiiiplow.gulimall.product.service.CategoryService;
-import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +30,7 @@ public class CategoryController {
      */
     @RequestMapping("/list/tree")
     //@RequiresPermissions("product:category:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(){
 
         List<CategoryEntity> categoryEntities = categoryService.listWithTree();
 
@@ -85,6 +84,9 @@ public class CategoryController {
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
+        if (catIds.length==0){
+            return R.error("所选数据为空");
+        }
 		categoryService.removeMenuByIds(Arrays.asList(catIds));
 
         return R.ok();
