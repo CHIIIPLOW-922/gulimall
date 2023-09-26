@@ -17,7 +17,7 @@ spring:
         server-addr: 192.168.194.103:8848
 #Minio配置
 minio:
-  host: 192.168.194.103:9000
+  host: http://192.168.194.103:9000
   url: ${minio.host}/${minio.bucketName}
   accessKey: chiiiplow
   secretKey: chiiiplow

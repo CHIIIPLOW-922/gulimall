@@ -2,12 +2,12 @@ package com.chiiiplow.gulimall.thirdparty.controller;
 
 
 import com.chiiiplow.common.utils.R;
-import io.minio.*;
+import com.chiiiplow.gulimall.thirdparty.config.MinioConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -29,26 +29,15 @@ public class OssController {
     @Value("${minio.secretKey}")
     private String secretKey;
 
+    @Autowired
+    private MinioConfig minioConfig;
 
 
-    private void creatBucket(MinioClient minioClient) throws Exception {
-        boolean exists = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
-        if (!exists) {
-            minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-        }
-    }
 
     @RequestMapping(path = "/oss/upload", method = RequestMethod.POST)
-    public void upload(@RequestParam MultipartFile file) {
-        try (InputStream in = file.getInputStream()) {
-            MinioClient minioClient = MinioClient.builder().endpoint(host).credentials(accessKey, secretKey).build();
-            creatBucket(minioClient);
-            minioClient.uploadObject(UploadObjectArgs.builder()
-                    .bucket(bucketName)
-                    .object(file.getOriginalFilename())
-                    .contentType(file.getContentType())
-                    .build());
-            System.err.println("上传成功");
+    public void upload(@RequestParam("file") MultipartFile file) {
+        try {
+            minioConfig.putObject(file);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

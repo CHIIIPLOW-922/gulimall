@@ -93,8 +93,8 @@ export default {
             _self.dataObj.policy = response.data.policy;
             _self.dataObj.signature = response.data.signature;
             _self.dataObj.ossaccessKeyId = response.data.accessid;
-            _self.dataObj.key = response.data.dir +getUUID()+"_${filename}";
-            _self.dataObj.dir = response.data.dir;
+            _self.dataObj.key = "${filename}";
+            // _self.dataObj.dir = response.data.dir;
             _self.dataObj.host = response.data.host;
             resolve(true);
           })
@@ -108,7 +108,7 @@ export default {
       this.fileList.push({
         name: file.name,
         // url: this.dataObj.host + "/" + this.dataObj.dir + "/" + file.name； 替换${filename}为真正的文件名
-        url: this.dataObj.host + "/" + this.dataObj.key.replace("${filename}",file.name)
+        url: this.dataObj.host + "/" + this.file.name
       });
       this.emitInput(this.fileList);
     },
