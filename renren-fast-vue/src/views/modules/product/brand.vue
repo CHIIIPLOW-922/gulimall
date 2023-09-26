@@ -1,5 +1,6 @@
 <template>
   <div class="mod-config">
+    <video-player ref="videoPlayer" :options="playerOptions"></video-player>
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
         <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
@@ -105,11 +106,19 @@
 </template>
 
 <script>
+import VueDPlayer from "vue-dplayer";
+import "dplayer/dist/DPlayer.min.js";
 import AddOrUpdate from "./brand-add-or-update";
 import CategoryCascader from "../common/category-cascader";
 export default {
   data() {
     return {
+      playerOptions:{
+        video:{
+          url:"http://192.168.194.103:9000/gulimall/tftafuuaae_633~1.mp4"
+        }
+
+      },
       dataForm: {
         key: ""
       },
@@ -127,9 +136,14 @@ export default {
       popCatelogSelectVisible: false
     };
   },
+  mounted(){
+    const player = this.$refs.videoPlayer.player;
+    player.play()
+  },
   components: {
     AddOrUpdate,
-    CategoryCascader
+    CategoryCascader,
+    'video-player': VueDPlayer
   },
   activated() {
     this.getDataList();
@@ -269,3 +283,9 @@ export default {
   }
 };
 </script>
+<style>
+.dplayer{
+  height: 500px;
+  width: 700px;
+}
+</style>
