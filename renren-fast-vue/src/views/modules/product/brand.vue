@@ -113,10 +113,22 @@ import CategoryCascader from "../common/category-cascader";
 export default {
   data() {
     return {
+      player:null,
       list: [],
       playerOptions:{
+        mutex: false, //  防止同时播放多个用户，在该用户开始播放时暂停其他用户
+        theme: "#fff", // 风格颜色，例如播放条，音量条的颜色
+        logo: 'http://192.168.194.103:9000/gulimall/Joji.png',
+        loop: false, // 是否自动循环
+        lang: "zh-cn", // 语言，'en', 'zh-cn', 'zh-tw'
+        screenshot: true, // 是否允许截图（按钮），点击可以自动将截图下载到本地
+        hotkey: true, // 是否支持热键，调节音量，播放，暂停等
+        preload: "auto", // 自动预加载
+        autoplay:true,
+        volume: 0.5, // 初始化音量
+        playbackSpeed: [0.5, 1, 1.5, 2],
         video:{
-          url:"http://192.168.194.103:9000/gulimall/xffadchbdo_694~1.mp4"
+          url:'',
         }
 
       },
@@ -137,10 +149,13 @@ export default {
       popCatelogSelectVisible: false
     };
   },
+  created(){
+    this.listVideoName();
+  },
   mounted(){
     // const player = this.$refs.videoPlayer.player
     // player.play()
-    this.listVideoName()
+    this.player = this.$refs.videoPlayer.dp;
   },
   components: {
     AddOrUpdate,
@@ -157,8 +172,9 @@ export default {
         method:"get",
         data:this.$http.adornData({})
       }).then(({data})=>{
-        this.list = data.data;
-        console.log(this.list);
+        this.player.switchVideo({
+          url:"http://192.168.194.103:9000/gulimall/" + data.data[0]
+          });
       })
     },
     addCatelogSelect() {
