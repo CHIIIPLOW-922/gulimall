@@ -1,0 +1,24 @@
+#端口
+server:
+  port: 30000
+
+#Spring配置
+spring:
+  application:
+    name: gulimall-third-party
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.194.103:8848
+#Minio配置
+minio:
+  host: 192.168.194.103:9000
+  url: ${minio.host}/${minio.bucketName}
+  accessKey: chiiiplow
+  secretKey: chiiiplow
+  bucketName: gulimall
