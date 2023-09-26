@@ -8,8 +8,8 @@ spring:
     name: gulimall-third-party
   servlet:
     multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
+      max-file-size: 2000MB
+      max-request-size: 2000MB
 
   cloud:
     nacos:

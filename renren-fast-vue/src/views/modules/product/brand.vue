@@ -113,9 +113,10 @@ import CategoryCascader from "../common/category-cascader";
 export default {
   data() {
     return {
+      list: [],
       playerOptions:{
         video:{
-          url:"http://192.168.194.103:9000/gulimall/tftafuuaae_633~1.mp4"
+          url:"http://192.168.194.103:9000/gulimall/xffadchbdo_694~1.mp4"
         }
 
       },
@@ -137,8 +138,9 @@ export default {
     };
   },
   mounted(){
-    const player = this.$refs.videoPlayer.player;
-    player.play()
+    // const player = this.$refs.videoPlayer.player
+    // player.play()
+    this.listVideoName()
   },
   components: {
     AddOrUpdate,
@@ -149,6 +151,16 @@ export default {
     this.getDataList();
   },
   methods: {
+    listVideoName(){
+      this.$http({
+        url: this.$http.adornUrl("/thirdparty/oss/listVideoName"),
+        method:"get",
+        data:this.$http.adornData({})
+      }).then(({data})=>{
+        this.list = data.data;
+        console.log(this.list);
+      })
+    },
     addCatelogSelect() {
       //{"brandId":1,"catelogId":2}
       this.popCatelogSelectVisible =false;

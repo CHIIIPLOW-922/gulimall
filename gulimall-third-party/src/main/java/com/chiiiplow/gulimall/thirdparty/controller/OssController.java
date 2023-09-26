@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 public class OssController {
@@ -26,8 +27,6 @@ public class OssController {
     @Value("${minio.accessKey}")
     private String accessKey;
 
-    @Value("${minio.secretKey}")
-    private String secretKey;
 
     @Autowired
     private MinioConfig minioConfig;
@@ -42,6 +41,17 @@ public class OssController {
             throw new RuntimeException(e.getMessage());
         }
 
+    }
+
+    @RequestMapping(path="/oss/listVideoName",method=RequestMethod.GET)
+    public R listVideoName(){
+        try{
+            List<String> list = minioConfig.listObjectNames(bucketName).stream().filter(s -> s.endsWith(".mp4")).collect(Collectors.toList());
+            Collections.shuffle(list);
+            return R.ok().put("data",list);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
 
