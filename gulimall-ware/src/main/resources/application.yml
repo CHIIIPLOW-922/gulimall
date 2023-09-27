@@ -8,6 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.194.103:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   application:
     name: gulimall-ware
 mybatis-plus:
@@ -17,3 +19,7 @@ mybatis-plus:
       id-type: auto
 server:
   port: 11000
+
+logging:
+  level:
+    com.chiiiplow.gulimall: debug

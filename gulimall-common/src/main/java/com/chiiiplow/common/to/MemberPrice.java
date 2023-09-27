@@ -1,5 +1,5 @@
 /** Copyright 2020 bejson.com */
-package com.chiiiplow.gulimall.product.vo;
+package com.chiiiplow.common.to;
 
 import lombok.Data;
 
@@ -13,9 +13,10 @@ import java.math.BigDecimal;
  */
 
 @Data
-public class Bounds {
+public class MemberPrice {
 
-  private BigDecimal buyBounds;
-  private BigDecimal growBounds;
+  private Long id;
+  private String name;
+  private BigDecimal price;
 
 }

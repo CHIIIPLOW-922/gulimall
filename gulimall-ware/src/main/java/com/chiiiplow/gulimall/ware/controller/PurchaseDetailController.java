@@ -1,9 +1,9 @@
 package com.chiiiplow.gulimall.ware.controller;
 
-import com.chiiiplow.gulimall.ware.entity.PurchaseDetailEntity;
-import com.chiiiplow.gulimall.ware.service.PurchaseDetailService;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.R;
+import com.chiiiplow.gulimall.ware.entity.PurchaseDetailEntity;
+import com.chiiiplow.gulimall.ware.service.PurchaseDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +15,9 @@ import java.util.Map;
 /**
  * 
  *
- * @author chiiiplow
- * @email q641484973@gmail.com
- * @date 2022-10-13 14:23:19
+ * @author CHIIIPLOW
+ * @email q641484973@qq.com
+ * @date 2020-05-22 19:55:33
  */
 @RestController
 @RequestMapping("ware/purchasedetail")
@@ -54,6 +54,7 @@ public class PurchaseDetailController {
     @RequestMapping("/save")
     //@RequiresPermissions("ware:purchasedetail:save")
     public R save(@RequestBody PurchaseDetailEntity purchaseDetail){
+        purchaseDetail.setStatus(0);
 		purchaseDetailService.save(purchaseDetail);
 
         return R.ok();

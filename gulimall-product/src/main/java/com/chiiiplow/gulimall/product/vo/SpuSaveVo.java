@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Auto-generated: 2020-05-31 11:3:26
  *
- * @author bejson.com (i@bejson.com)
+ * @author CHIIIPLOW
  * @website http://www.bejson.com/java2pojo/
  */
 
