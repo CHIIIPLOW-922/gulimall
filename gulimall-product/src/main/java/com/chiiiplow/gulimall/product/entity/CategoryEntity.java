@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * 商品三级分类
  * 
- * @author chiiiplow
- * @email q641484973@gmail.com
- * @date 2022-10-13 12:43:27
+ * @author 夏沫止水
+ * @email HeJieLin@gulimall.com
+ * @date 2020-05-22 19:00:18
  */
 @Data
 @TableName("pms_category")
@@ -62,7 +62,7 @@ public class CategoryEntity implements Serializable {
 	private Integer productCount;
 
 	/**
-	 * 子分类
+	 * 所有子分类
 	 */
 	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	@TableField(exist = false)

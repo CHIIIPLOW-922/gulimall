@@ -10,9 +10,9 @@ import java.io.Serializable;
 /**
  * 属性分组
  * 
- * @author chiiiplow
- * @email q641484973@gmail.com
- * @date 2022-10-13 12:43:27
+ * @author 夏沫止水
+ * @email HeJieLin@gulimall.com
+ * @date 2020-05-22 19:00:18
  */
 @Data
 @TableName("pms_attr_group")
