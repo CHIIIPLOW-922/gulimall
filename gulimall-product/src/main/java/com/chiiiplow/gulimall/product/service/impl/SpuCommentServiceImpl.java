@@ -3,11 +3,11 @@ package com.chiiiplow.gulimall.product.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.Query;
 import com.chiiiplow.gulimall.product.dao.SpuCommentDao;
 import com.chiiiplow.gulimall.product.entity.SpuCommentEntity;
 import com.chiiiplow.gulimall.product.service.SpuCommentService;
-import com.chiiiplow.common.utils.PageUtils;
-import com.chiiiplow.common.utils.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;

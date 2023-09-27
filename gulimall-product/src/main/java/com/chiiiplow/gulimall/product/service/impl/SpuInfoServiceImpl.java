@@ -8,6 +8,7 @@ import com.chiiiplow.gulimall.product.entity.SpuInfoEntity;
 import com.chiiiplow.gulimall.product.service.SpuInfoService;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.Query;
+import com.chiiiplow.gulimall.product.vo.SpuSaveVo;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -24,6 +25,31 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         );
 
         return new PageUtils(page);
+    }
+
+    @Override
+    public void savesupInfo(SpuSaveVo vo) {
+
+    }
+
+    @Override
+    public void saveBaseSpuInfo(SpuInfoEntity spuInfoEntity) {
+
+    }
+
+    @Override
+    public PageUtils queryPageByCondtion(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public void up(Long spuId) {
+
+    }
+
+    @Override
+    public SpuInfoEntity getSpuInfoBySkuId(Long skuId) {
+        return null;
     }
 
 }

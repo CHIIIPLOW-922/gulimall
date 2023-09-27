@@ -1,20 +1,40 @@
 package com.chiiiplow.gulimall.product.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.chiiiplow.gulimall.product.entity.SpuInfoEntity;
 import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.gulimall.product.entity.SpuInfoEntity;
+import com.chiiiplow.gulimall.product.vo.SpuSaveVo;
 
 import java.util.Map;
 
 /**
  * spu信息
  *
- * @author chiiiplow
- * @email q641484973@gmail.com
- * @date 2022-10-13 12:43:26
+ * @author CHIIIPLOW
+ * @email HeJieLin@gulimall.com
+ * @date 2020-05-22 19:00:18
  */
 public interface SpuInfoService extends IService<SpuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void savesupInfo(SpuSaveVo vo);
+
+    void saveBaseSpuInfo(SpuInfoEntity spuInfoEntity);
+
+    PageUtils queryPageByCondtion(Map<String, Object> params);
+
+    /**
+     * 商品上架
+     * @param spuId
+     */
+    void up(Long spuId);
+
+    /**
+     * 根据skuId查询spu的信息
+     * @param skuId
+     * @return
+     */
+    SpuInfoEntity getSpuInfoBySkuId(Long skuId);
 }
 

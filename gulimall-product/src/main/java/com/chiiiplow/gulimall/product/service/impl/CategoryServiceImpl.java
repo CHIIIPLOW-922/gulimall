@@ -9,6 +9,7 @@ import com.chiiiplow.gulimall.product.entity.CategoryEntity;
 import com.chiiiplow.gulimall.product.service.CategoryService;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.Query;
+import com.chiiiplow.gulimall.product.vo.Catelog2Vo;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -65,6 +66,21 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         Collections.reverse(parentPath);
 
         return (Long[]) parentPath.toArray(new Long[parentPath.size()]);
+    }
+
+    @Override
+    public void updateCascade(CategoryEntity category) {
+
+    }
+
+    @Override
+    public List<CategoryEntity> getLevel1Categorys() {
+        return null;
+    }
+
+    @Override
+    public Map<String, List<Catelog2Vo>> getCatalogJson() {
+        return null;
     }
 
     private List<Long> findParentPath(Long catelogId, List<Long> paths) {

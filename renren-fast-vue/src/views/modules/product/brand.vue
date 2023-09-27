@@ -116,7 +116,7 @@ export default {
       player:null,
       list: [],
       playerOptions:{
-        mutex: false, //  防止同时播放多个用户，在该用户开始播放时暂停其他用户
+        mutex: true, //  防止同时播放多个用户，在该用户开始播放时暂停其他用户
         theme: "#fff", // 风格颜色，例如播放条，音量条的颜色
         logo: 'http://192.168.194.103:9000/gulimall/Joji.png',
         loop: false, // 是否自动循环
@@ -313,7 +313,8 @@ export default {
 </script>
 <style>
 .dplayer{
-  height: 500px;
-  width: 700px;
+  height: 350px;
+  width: 500px;
+  padding-bottom:10px;
 }
 </style>
