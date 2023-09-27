@@ -10,7 +10,7 @@ import java.util.Map;
  * 商品评价回复关系
  *
  * @author CHIIIPLOW
- * @email HeJieLin@gulimall.com
+ * @email q641484973@gmail.com
  * @date 2020-05-22 19:00:18
  */
 public interface CommentReplayService extends IService<CommentReplayEntity> {

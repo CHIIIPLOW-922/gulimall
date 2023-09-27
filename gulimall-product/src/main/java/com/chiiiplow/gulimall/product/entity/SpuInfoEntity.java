@@ -12,8 +12,8 @@ import java.util.Date;
 /**
  * spu信息
  * 
- * @author 夏沫止水
- * @email HeJieLin@gulimall.com
+ * @author CHIIIPLOW
+ * @email q641484973@gmail.com
  * @date 2020-05-22 19:00:18
  */
 @Data
