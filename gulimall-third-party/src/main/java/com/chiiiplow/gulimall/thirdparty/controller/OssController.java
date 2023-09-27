@@ -34,7 +34,7 @@ public class OssController {
 
 
     @RequestMapping(path = "/oss/upload", method = RequestMethod.POST)
-    public void upload(@RequestParam("file") MultipartFile file) {
+    public void upload(@RequestParam(name = "file") MultipartFile file) {
         try {
             minioConfig.putObject(file);
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class OssController {
         try{
             List<String> list = minioConfig.listObjectNames(bucketName).stream().filter(s -> s.endsWith(".mp4")).collect(Collectors.toList());
             Collections.shuffle(list);
-            return R.ok().put("data",list);
+            return R.ok().put("data",list.get(0));
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());
         }

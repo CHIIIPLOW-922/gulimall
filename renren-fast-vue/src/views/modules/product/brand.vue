@@ -173,7 +173,7 @@ export default {
         data:this.$http.adornData({})
       }).then(({data})=>{
         this.player.switchVideo({
-          url:"http://192.168.194.103:9000/gulimall/" + data.data[0]
+          url:"http://192.168.194.103:9000/gulimall/" + data.data
           });
       })
     },
