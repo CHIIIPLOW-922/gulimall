@@ -1,9 +1,10 @@
 package com.chiiiplow.gulimall.product.controller;
 
-import com.chiiiplow.gulimall.product.entity.SpuInfoEntity;
-import com.chiiiplow.gulimall.product.service.SpuInfoService;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.R;
+import com.chiiiplow.gulimall.product.entity.SpuInfoEntity;
+import com.chiiiplow.gulimall.product.service.SpuInfoService;
+import com.chiiiplow.gulimall.product.vo.SpuSaveVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,13 +27,36 @@ public class SpuInfoController {
     private SpuInfoService spuInfoService;
 
     /**
+     * 根据skuId查询spu的信息
+     * @param skuId
+     * @return
+     */
+    @GetMapping(value = "/skuId/{skuId}")
+    public R getSpuInfoBySkuId(@PathVariable("skuId") Long skuId) {
+
+        SpuInfoEntity spuInfoEntity = spuInfoService.getSpuInfoBySkuId(skuId);
+
+        return R.ok().setData(spuInfoEntity);
+    }
+
+    //商品上架
+    ///product/spuinfo/{spuId}/up
+    @PostMapping(value = "/{spuId}/up")
+    public R spuUp(@PathVariable("spuId") Long spuId) {
+
+        spuInfoService.up(spuId);
+
+        return R.ok();
+    }
+
+    /**
      * 列表
      */
     @RequestMapping("/list")
     //@RequiresPermissions("product:spuinfo:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuInfoService.queryPage(params);
-
+        PageUtils page = spuInfoService.queryPageByCondtion(params);
+        
         return R.ok().put("page", page);
     }
 
@@ -53,8 +77,10 @@ public class SpuInfoController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:spuinfo:save")
-    public R save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
+    public R save(@RequestBody SpuSaveVo vo){
+		//spuInfoService.save(spuInfo);
+
+        spuInfoService.savesupInfo(vo);
 
         return R.ok();
     }

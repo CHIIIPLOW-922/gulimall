@@ -1,9 +1,9 @@
 package com.chiiiplow.gulimall.product.controller;
 
-import com.chiiiplow.gulimall.product.entity.ProductAttrValueEntity;
-import com.chiiiplow.gulimall.product.service.ProductAttrValueService;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.R;
+import com.chiiiplow.gulimall.product.entity.ProductAttrValueEntity;
+import com.chiiiplow.gulimall.product.service.ProductAttrValueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

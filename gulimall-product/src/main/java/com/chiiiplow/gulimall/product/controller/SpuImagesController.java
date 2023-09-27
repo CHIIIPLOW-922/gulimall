@@ -1,9 +1,9 @@
 package com.chiiiplow.gulimall.product.controller;
 
-import com.chiiiplow.gulimall.product.entity.SpuImagesEntity;
-import com.chiiiplow.gulimall.product.service.SpuImagesService;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.R;
+import com.chiiiplow.gulimall.product.entity.SpuImagesEntity;
+import com.chiiiplow.gulimall.product.service.SpuImagesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

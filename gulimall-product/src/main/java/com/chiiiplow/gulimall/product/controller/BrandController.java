@@ -1,17 +1,18 @@
 package com.chiiiplow.gulimall.product.controller;
 
+import com.chiiiplow.common.utils.PageUtils;
+import com.chiiiplow.common.utils.R;
+import com.chiiiplow.common.valid.AddGroup;
+import com.chiiiplow.common.valid.UpdateGroup;
 import com.chiiiplow.common.valid.UpdateStatusGroup;
 import com.chiiiplow.gulimall.product.entity.BrandEntity;
 import com.chiiiplow.gulimall.product.service.BrandService;
-import com.chiiiplow.common.utils.PageUtils;
-import com.chiiiplow.common.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Map;
-
 
 
 /**
@@ -55,8 +56,27 @@ public class BrandController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:brand:save")
-    public R save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand
+            //, BindingResult result
+    ){
+
+        // Map<String,String> map = new HashMap<>();
+        //
+        // if (result.hasErrors()) {
+        //     //获取效验错误结果
+        //     result.getFieldErrors().forEach((item)-> {
+        //         //获取到错误提示
+        //         String message = item.getDefaultMessage();
+        //         //获取错误的属性的名字
+        //         String field = item.getField();
+        //         map.put(field,message);
+        //     });
+        //     return R.error(400,"提交的数据不合法").put("data",map);
+        // } else {
+        //
+        // }
+        brandService.save(brand);
+
 
         return R.ok();
     }
@@ -66,8 +86,8 @@ public class BrandController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
-    public R update(@RequestBody BrandEntity brand){
-		brandService.updateById(brand);
+    public R update(@Validated({UpdateGroup.class}) @RequestBody BrandEntity brand){
+		brandService.updateDetail(brand);
 
         return R.ok();
     }
