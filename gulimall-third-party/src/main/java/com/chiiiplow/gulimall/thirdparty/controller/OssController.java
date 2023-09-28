@@ -34,9 +34,10 @@ public class OssController {
 
 
     @RequestMapping(path = "/oss/upload", method = RequestMethod.POST)
-    public void upload(@RequestParam(name = "file") MultipartFile file) {
+    public R upload(@RequestParam(name = "file") MultipartFile file) {
         try {
-            minioConfig.putObject(file);
+            String name = minioConfig.putObject(file);
+            return R.ok().put("data", url + "/" + name);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -55,6 +56,7 @@ public class OssController {
     }
 
 
+    /*
     @RequestMapping("/oss/policy")
     public R policy() {
         String format = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
@@ -77,4 +79,5 @@ public class OssController {
         }
         return new R().put("data", respMap);
     }
+    */
 }

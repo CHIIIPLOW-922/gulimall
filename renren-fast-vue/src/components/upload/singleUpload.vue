@@ -6,7 +6,6 @@
       list-type="picture"
       :multiple="false" :show-file-list="showFileList"
       :file-list="fileList"
-      :before-upload="beforeUpload"
       :on-remove="handleRemove"
       :on-success="handleUploadSuccess"
       :on-preview="handlePreview">
@@ -19,7 +18,6 @@
   </div>
 </template>
 <script>
-   import {policy} from './policy'
 
   export default {
     name: 'singleUpload',
@@ -75,7 +73,7 @@
       handlePreview(file) {
         this.dialogVisible = true;
       },
-      beforeUpload(file) {
+      /* beforeUpload(file) {
         let _self = this;
         return new Promise((resolve, reject) => {
           policy().then(response => {
@@ -83,7 +81,7 @@
             _self.dataObj.policy = response.data.policy;
             _self.dataObj.signature = response.data.signature;
             _self.dataObj.ossaccessKeyId = response.data.accessid;
-            _self.dataObj.key = '${filename}';
+            _self.dataObj.key =  '${filename}';
             _self.dataObj.host = response.data.host;
             console.log("响应的数据222。。。",_self.dataObj);
             resolve(true)
@@ -91,12 +89,12 @@
             reject(false)
           })
         })
-      },
+      }, */
       handleUploadSuccess(res, file) {
         console.log("上传成功...")
         this.showFileList = true;
         this.fileList.pop();
-        this.fileList.push({name: file.name, url: this.dataObj.host + '/' + file.name });
+        this.fileList.push({name: file.name, url: res.data });
         this.emitInput(this.fileList[0].url);
       }
     }

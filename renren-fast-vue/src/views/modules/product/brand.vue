@@ -175,6 +175,7 @@ export default {
         this.player.switchVideo({
           url:"http://192.168.194.103:9000/gulimall/" + data.data
           });
+        console.log(data.data)
       })
     },
     addCatelogSelect() {

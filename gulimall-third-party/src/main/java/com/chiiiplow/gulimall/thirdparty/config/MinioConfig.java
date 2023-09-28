@@ -19,8 +19,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 
 
 @Component
@@ -62,15 +67,18 @@ public class MinioConfig implements InitializingBean {
             minioClient.makeBucket(this.bucket);
         }
         try (InputStream inputStream = multipartFile.getInputStream()) {
+            String dateFolder = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            String originalFilename = multipartFile.getOriginalFilename();
+            String uniqueFileName = UUID.randomUUID().toString().replace("-","") + "-" + originalFilename;
+            String objectName = dateFolder + "/" + uniqueFileName;
             // 上传文件的名称
-            String fileName = multipartFile.getOriginalFilename();
             // PutObjectOptions，上传配置(文件大小，内存中文件分片大小)
             PutObjectOptions putObjectOptions = new PutObjectOptions(multipartFile.getSize(), PutObjectOptions.MIN_MULTIPART_SIZE);
             // 文件的ContentType
             putObjectOptions.setContentType(multipartFile.getContentType());
-            minioClient.putObject(this.bucket, fileName, inputStream, putObjectOptions);
+            minioClient.putObject(this.bucket, objectName, inputStream, putObjectOptions);
             // 返回访问路径
-            return this.url + UriUtils.encode(fileName, StandardCharsets.UTF_8);
+            return objectName;
         }
     }
 
