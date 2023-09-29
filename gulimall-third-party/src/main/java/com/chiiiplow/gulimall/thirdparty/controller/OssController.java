@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -26,6 +31,8 @@ public class OssController {
 
     @Value("${minio.accessKey}")
     private String accessKey;
+
+    private static final String textFlieName="test.txt";
 
 
     @Autowired
@@ -55,7 +62,30 @@ public class OssController {
         }
     }
 
+    @PutMapping("/oss/textFile")
+    public R updateTextFile(@RequestBody String text){
+        try {
+            boolean exists = minioConfig.statObject(bucketName,textFlieName);
+            if (!exists) {
+                return R.error(400,"文件不存在");
+            }
+            // 读取原文件内容
+//            InputStream inputStream = minioConfig.getObject(bucketName,textFlieName);
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+//            String fileContent = reader.lines().collect(Collectors.joining("\n"));
+//            reader.close();
 
+            // 合并新文本内容
+            //String updatedContent = fileContent + "\n" + text;
+            // 将更新后的文本内容写回到文件中
+            ByteArrayInputStream updatedStream = new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8));
+            minioConfig.putTextObject(bucketName,textFlieName,updatedStream);
+            return R.ok("修改成功").put("data",text);
+        }catch (Exception e){
+            return R.error("修改失败");
+        }
+
+    }
     /*
     @RequestMapping("/oss/policy")
     public R policy() {

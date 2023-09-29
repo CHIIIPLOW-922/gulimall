@@ -55,6 +55,17 @@ public class GulimallSearchApplicationTests {
         private String state;
     }
 
+    @Test
+    public void esContextLoads() throws IOException {
+        IndexRequest indexRequest = new IndexRequest("users");
+        indexRequest.id("3");
+        Account account = new Account();
+        String jsonString = JSON.toJSONString(account);
+        indexRequest.source(jsonString, XContentType.JSON);
+        IndexResponse index = client.index(indexRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+        System.out.println(index.toString());
+    }
+
 
     /**
      * 复杂检索:在bank中搜索address中包含mill的所有人的年龄分布以及平均年龄，平均薪资

@@ -82,6 +82,20 @@ public class MinioConfig implements InitializingBean {
         }
     }
 
+    public void putTextObject(String bucketName,String fileName, InputStream inputStream) throws Exception {
+        if (!minioClient.bucketExists(this.bucket)) {
+            minioClient.makeBucket(this.bucket);
+        }
+        try (InputStream in = inputStream) {
+            // PutObjectOptions，上传配置(文件大小，内存中文件分片大小)
+            PutObjectOptions putObjectOptions = new PutObjectOptions(inputStream.available(), PutObjectOptions.MIN_MULTIPART_SIZE);
+            // 文件的ContentType
+            putObjectOptions.setContentType("text/plain");
+            minioClient.putObject(bucketName, fileName, in, putObjectOptions);
+            // 返回访问路径
+        }
+    }
+
     /**
      * 文件下载
      */
@@ -117,6 +131,15 @@ public class MinioConfig implements InitializingBean {
             bucketListName.add(bucket.name());
         }
         return bucketListName;
+    }
+
+
+    public boolean statObject(String bucketName, String objectName) throws Exception {
+        return minioClient.statObject(bucketName, objectName) != null;
+    }
+
+    public InputStream getObject(String bucketName, String objectName) throws Exception {
+       return minioClient.getObject(bucketName, objectName);
     }
 
     /**
