@@ -93,8 +93,10 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
 
     @Override
     public List<SkuInfoEntity> getSkusBySpuId(Long spuId) {
-        return null;
+        return this.list(new QueryWrapper<SkuInfoEntity>().eq("spu_id",spuId));
     }
+
+
 
     @Override
     public SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException {

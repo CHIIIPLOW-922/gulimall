@@ -8,6 +8,7 @@ import com.chiiiplow.common.constant.ProductConstant;
 import com.chiiiplow.common.to.SkuHasStockVo;
 import com.chiiiplow.common.to.SkuReductionTo;
 import com.chiiiplow.common.to.SpuBoundTo;
+import com.chiiiplow.common.to.es.SkuEsModel;
 import com.chiiiplow.common.utils.PageUtils;
 import com.chiiiplow.common.utils.Query;
 import com.chiiiplow.common.utils.R;
@@ -16,6 +17,7 @@ import com.chiiiplow.gulimall.product.entity.*;
 import com.chiiiplow.gulimall.product.feign.CouponFeignService;
 import com.chiiiplow.gulimall.product.service.*;
 import com.chiiiplow.gulimall.product.vo.*;
+import lombok.val;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -53,6 +52,12 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
+
+    @Autowired
+    private BrandService brandService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     private CouponFeignService couponFeignService;
@@ -228,6 +233,27 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     @Override
     public void up(Long spuId) {
+
+
+        List<SkuInfoEntity> skusBySpuId = skuInfoService.getSkusBySpuId(spuId);
+
+        skusBySpuId.stream().map(sku ->{
+            SkuEsModel esModel = new SkuEsModel();
+            BeanUtils.copyProperties(sku,esModel);
+            esModel.setSkuPrice(sku.getPrice());
+            esModel.setSkuImg(sku.getSkuDefaultImg());
+
+            BrandEntity brand = brandService.getById(esModel.getBrandId());
+            esModel.setBrandName(brand.getName());
+            esModel.setBrandImg(brand.getLogo());
+
+            CategoryEntity category = categoryService.getById(esModel.getCatalogId());
+            esModel.setCatalogName(category.getName());
+
+
+            return esModel;
+        }).collect(Collectors.toList());
+
 
     }
 

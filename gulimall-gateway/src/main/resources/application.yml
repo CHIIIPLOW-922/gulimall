@@ -2,7 +2,6 @@ spring:
   cloud:
     gateway:
       routes:
-
         - id: product_route
           uri: lb://gulimall-product
           predicates:

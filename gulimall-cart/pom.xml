@@ -7,7 +7,7 @@
         <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.chiiiplow</groupId>
+    <groupId>com.chiiiplow.gulimall</groupId>
     <artifactId>gulimall-cart</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gulimall-cart</name>

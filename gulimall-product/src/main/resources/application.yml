@@ -20,7 +20,7 @@ mybatis-plus:
       id-type: auto
 #端口
 server:
-  port: 10000
+  port: 10800
   servlet:
     session:
       timeout: 30m
